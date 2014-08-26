@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Day Calendar</title>
+  <link rel="stylesheet" href="calendar/vendor/css/normalize.css">
+  <link rel="stylesheet" href="calendar/views/day/day.view.css">
+  <link rel="stylesheet" href="calendar/views/entry/entry.view.css">
+</head>
+<body>
+  <main id="calendar-region">
+  </main>
+
+  <!-- Prefer templates to reside in view folder like so: views/entry/entry.view.tpl,
+       except that requires an async text loader like require.js or a build step.
+       Both are too heavy for this demo, hence the templates inlined below. -->
+
+  <script id="entry-view" type="text/html">
+  </script>
+
+  <script id="day-view" type="text/html">
+    <div><%= test %></div>
+  </script>
+
+  <!-- Libraries -->
+  <script src="calendar/vendor/js/jquery.js"></script>
+  <script src="calendar/vendor/js/underscore.js"></script>
+  <script src="calendar/vendor/js/backbone.js"></script>
+  <script src="calendar/vendor/js/backbone.radio.js"></script>
+
+  <!-- Application -->
+  <script src="calendar/calendar.js"></script>
+
+  <!-- Application Modules -->
+  <script src="calendar/presenters/entries.presenter.js"></script>
+  <script src="calendar/entities/entries.collection.js"></script>
+  <script src="calendar/entities/entry.model.js"></script>
+  <script src="calendar/views/day/day.view.js"></script>
+  <script src="calendar/views/entry/entries.view.js"></script>
+  <script src="calendar/views/entry/entry.view.js"></script>
+</body>
+</html>
