@@ -1,3 +1,6 @@
+// Author: Ian Stewart
+// JSCS ^1.5.9
+// 
 // Derived from AirBnB + LinkedIn Idiomatic + Crockford
 // https://github.com/airbnb/javascript
 // https://github.com/linkedin/idiomatic.js (Idiomatic fork with Crockford inner spacing)

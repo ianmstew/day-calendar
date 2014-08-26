@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!-- Note: Under normal circumstances, assets would be concatenated and minified
+     by a build step. LESS/SASS/Styl for CSS, RequireJS/Browserify/Webpack for JS.
+     To adhere to challenge requirements, this approach is purely static, using
+     traditional Javascript modules, namespaces, and limited browser globals. -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,16 +12,19 @@
   <link rel="stylesheet" href="calendar/views/entry/entry.view.css">
 </head>
 <body>
+  <!-- Target render region for widget; see index.js -->
   <main id="calendar-region">
   </main>
 
-  <!-- Prefer templates to reside in view folder like so: views/entry/entry.view.tpl,
+  <!-- Prefer templates to reside in view folder, e.g., views/entry/entry.view.tpl,
        except that requires an async text loader like require.js or a build step.
-       Both are too heavy for this demo, hence the templates inlined below. -->
+       Both are too heavy for this demo; hence, templates are inlined below. -->
 
+  <!-- Calendar entry template -->
   <script id="entry-view" type="text/html">
   </script>
 
+  <!-- Calendar day template -->
   <script id="day-view" type="text/html">
     <div><%= test %></div>
   </script>
@@ -28,15 +35,18 @@
   <script src="calendar/vendor/js/backbone.js"></script>
   <script src="calendar/vendor/js/backbone.radio.js"></script>
 
-  <!-- Application -->
+  <!-- Widget -->
   <script src="calendar/calendar.js"></script>
 
-  <!-- Application Modules -->
+  <!-- Widget modules -->
   <script src="calendar/presenters/entries.presenter.js"></script>
   <script src="calendar/entities/entries.collection.js"></script>
   <script src="calendar/entities/entry.model.js"></script>
   <script src="calendar/views/day/day.view.js"></script>
   <script src="calendar/views/entry/entries.view.js"></script>
   <script src="calendar/views/entry/entry.view.js"></script>
+
+  <!-- Facebook code challenge driver -->
+  <script src="index.js"></script>
 </body>
 </html>

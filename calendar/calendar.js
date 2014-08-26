@@ -1,44 +1,46 @@
-(function (Backbone, root) {
+(function (root, Backbone) {
 
-  // Application
-  function Calendar() {
-    this.initialize();
+  // Calendar widget
+  function Calendar(options) {
+    this.initialize(options);
   }
 
-  // Instance methods
+  // Instance methods/objects
   _.extend(Calendar.prototype, {
 
-    // Application events channel
-    // https://github.com/jmeas/backbone.radio
+    // Events channel
     channel: null,
 
-    initialize: function () {
+    // Root container
+    $el: null,
+
+    // Semantic initializer conforming to Backbone conventions
+    initialize: function (options) {
+      if (!(options || {}).el) throw Error('Must supply "el" element or selector for widget');
+      this.$el = $(options.el);
       this._initChannel();
     },
 
+    // Widget will communicate internally via a Radio event channel
+    // See https://github.com/jmeas/backbone.radio
     _initChannel: function () {
       this.channel = Backbone.Radio.channel('global');
     },
 
-    renderEvents: function (events) {
-      console.log('Rendering events:', events);
+    // Render events for a day
+    renderDay: function (events) {
+      console.log('Rendering events into', this.$el, events);
     }
   });
 
-  // Class methods/objects
+  // Static methods/objects
   _.extend(Calendar, {
 
-    layOutDay: function (events) {
-      var calendar = new Calendar();
-      calendar.renderEvents(events);
-    },
-
-    // Submodules
+    // Namespaces
     Views: {},
     Entities: {},
     Presenters: {}
   });
 
   root.Calendar = Calendar;
-  root.layOutDay = Calendar.layOutDay;
-})(Backbone, this);
+})(this, Backbone);
