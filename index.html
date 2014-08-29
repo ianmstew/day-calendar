@@ -8,8 +8,9 @@
   <meta charset="UTF-8">
   <title>Day Calendar</title>
   <link rel="stylesheet" href="calendar/vendor/css/normalize.css">
-  <link rel="stylesheet" href="calendar/views/day/day.view.css">
-  <link rel="stylesheet" href="calendar/views/entry/entry.view.css">
+  <link rel="stylesheet" href="calendar/css/global.css">
+  <link rel="stylesheet" href="calendar/views/day/day.css">
+  <link rel="stylesheet" href="calendar/views/event/event.css">
 </head>
 <body>
   <!-- Target render region for widget; see index.js -->
@@ -18,35 +19,56 @@
 
   <!-- Prefer templates to reside in view folder, e.g., views/entry/entry.view.tpl,
        except that requires an async text loader like require.js or a build step.
-       Both are too heavy for this demo; hence, templates are inlined below. -->
-
-  <!-- Calendar entry template -->
-  <script id="entry-view" type="text/html">
-  </script>
+       Both are too heavy for this demo; hence, templates are inlined below.
+       They are, however, compiled only once - at script load time. -->
 
   <!-- Calendar day template -->
   <script id="day-view" type="text/html">
-    <div><%= test %></div>
+    <h1>Day</h1>
+    <h2>Events</h2>
+    <div class="events-container js-events">
+    </div>
   </script>
+
+  <!-- Calendar entry template -->
+  <script id="event-view" type="text/html">
+    Event
+  </script>
+
+  <!-- While Backbone is sufficient for this small demo, were the app to grow much
+       larger, an additional framework like Backbone.Marionette would be beneficial.
+       In fact, this widget's view classes have a good bit of boilerplate that could
+       be avoided with the addition of Backbone.Marionette. I used Backbone to
+       demonstrate my grasp of the fundamental issues surrounding view management. -->
 
   <!-- Libraries -->
   <script src="calendar/vendor/js/jquery.js"></script>
   <script src="calendar/vendor/js/underscore.js"></script>
   <script src="calendar/vendor/js/backbone.js"></script>
-  <script src="calendar/vendor/js/backbone.radio.js"></script>
+
+  <!-- Custom classes -->
+  <script src="calendar/classes/backbone.widget.js"></script>
+  <script src="calendar/classes/backbone.presenter.js"></script>
 
   <!-- Widget -->
   <script src="calendar/calendar.js"></script>
-
-  <!-- Widget modules -->
-  <script src="calendar/presenters/entries.presenter.js"></script>
-  <script src="calendar/entities/entries.collection.js"></script>
-  <script src="calendar/entities/entry.model.js"></script>
+  <script src="calendar/presenters/day.presenter.js"></script>
+  <script src="calendar/entities/event.model.js"></script>
+  <script src="calendar/entities/events.collection.js"></script>
   <script src="calendar/views/day/day.view.js"></script>
-  <script src="calendar/views/entry/entries.view.js"></script>
-  <script src="calendar/views/entry/entry.view.js"></script>
+  <script src="calendar/views/event/events.view.js"></script>
+  <script src="calendar/views/event/event.view.js"></script>
 
   <!-- Facebook code challenge driver -->
-  <script src="index.js"></script>
+  <script src="fb-code-challenge.js"></script>
+
+  <script>
+    layOutDay([
+      { start: 560, end: 620 },
+      { start: 540, end: 600 },
+      { start: 30, end: 150 },
+      { start: 610, end: 670 }
+    ]);
+  </script>
 </body>
 </html>

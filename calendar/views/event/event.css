@@ -1,0 +1,17 @@
+.events-container {
+  height: 720px;
+  width: 620px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.events {
+  position: relative;
+}
+
+.event {
+  position: absolute;
+  border: 1px solid black;
+  height: 100%;
+  width: 100%;
+}

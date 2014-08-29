@@ -6,7 +6,7 @@
   // Driver function
   function layOutDay(events) {
     if (!calendar) {
-      calendar = new Calendar({ el: '#calendar-region' });
+      calendar = new Calendar({ region: '#calendar-region' });
     }
     calendar.renderDay(events);
   }

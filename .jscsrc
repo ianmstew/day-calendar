@@ -86,4 +86,7 @@
   //   disallow
   //     if (true)
   //       doThis();
+  // - disallowMultipleVarDecl: option to except multiple vars without assignments
+  //     allow: var one, two, three;
+  //     disallow: var one = 1, two = 2, three = 3;
 }

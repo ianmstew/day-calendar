@@ -8,14 +8,11 @@
   // Define globals exposed by modern browsers.
   "browser": true,
 
-  // Define globals exposed by jQuery.
-  "jquery": true,
-
   // Define globals exposed by Node.js
   "node": true,
 
-  // Custom globals
   "globals": {
+    "jQuery": true,
     "_": true,
     "Backbone": true,
     "Calendar": true
@@ -44,10 +41,10 @@
   "maxparams": 5,
 
   // Prevent deep nesting
-  "maxdepth": 2,
+  "maxdepth": 3,
 
   // Concise functions
-  "maxstatements": 15,
+  "maxstatements": 25,
 
   // Prevent excessive branching
   "maxcomplexity": 6
