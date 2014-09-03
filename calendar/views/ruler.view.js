@@ -1,5 +1,6 @@
 (function (Backbone, Calendar, $, _) {
 
+  // Simple static view. Time index logic is within the model.
   var RulerView = Backbone.View.extend({
 
     // Precompile template on script load

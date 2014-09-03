@@ -1,5 +1,6 @@
 (function (Calendar, _) {
 
+  // Helper utility for dealing in 12 hour time format
   function Time(hours, minutes) {
     this.date = new Date('2001-01-01');
     this.date.setHours(hours || 0);
@@ -10,10 +11,6 @@
 
     start: null,
     date: null,
-
-    _addZero: function (num) {
-      return (num >= 0 && num < 10) ? '0' + num : num + '';
-    },
 
     // http://stackoverflow.com/a/16529336/957813
     _formatTime: function () {
@@ -29,25 +26,34 @@
       return formatted;
     },
 
+    _addZero: function (num) {
+      return (num >= 0 && num < 10) ? '0' + num : num + '';
+    },
+
+    // Return a new Time instance exactly 'minutes' in the future of this
     increment: function (minutes) {
       var date = new Date(this.date.getTime() + minutes * 60000);
       return new Time(date.getHours(), date.getMinutes());
     },
 
+    // Return time in 'hh:mm am/pm' format
     getFormattedTime: function () {
       return this._formatTime();
     },
 
+    // Return only 'hh:mm'
     getHoursMinutes: function () {
       var timeFormatted = this._formatTime();
       return timeFormatted.slice(0, timeFormatted.length - 3);
     },
 
+    // Return only 'am/pm'
     getAmPm: function () {
       var timeFormatted = this._formatTime();
       return timeFormatted.slice(timeFormatted.length - 2);
     },
 
+    // Return millisecond representation (useful for comparisons)
     getMillis: function () {
       return this.date.getTime();
     },
