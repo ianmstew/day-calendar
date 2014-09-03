@@ -11,13 +11,6 @@
   // Define globals exposed by Node.js
   "node": true,
 
-  "globals": {
-    "jQuery": true,
-    "_": true,
-    "Backbone": true,
-    "Calendar": true
-  },
-
   // Unfortunate overkill, but necessary for preceding || and &&.
   // See https://github.com/jshint/jshint/issues/735.
   "laxbreak": true,

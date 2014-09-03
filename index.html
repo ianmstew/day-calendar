@@ -9,8 +9,8 @@
   <title>Day Calendar</title>
   <link rel="stylesheet" href="calendar/vendor/css/normalize.css">
   <link rel="stylesheet" href="calendar/css/global.css">
-  <link rel="stylesheet" href="calendar/views/day/day.css">
-  <link rel="stylesheet" href="calendar/views/event/event.css">
+  <link rel="stylesheet" href="calendar/css/day.css">
+  <link rel="stylesheet" href="calendar/css/event.css">
 </head>
 <body>
   <!-- Target render region for widget; see index.js -->
@@ -32,7 +32,6 @@
 
   <!-- Calendar entry template -->
   <script id="event-view" type="text/html">
-    Event
   </script>
 
   <!-- While Backbone is sufficient for this small demo, were the app to grow any
@@ -58,21 +57,25 @@
   <script src="calendar/views/day/day.view.js"></script>
   <script src="calendar/views/event/events.view.js"></script>
   <script src="calendar/views/event/event.view.js"></script>
-  <script src="calendar/lib/util/sorter.js"></script>
+  <script src="calendar/lib/sort/sorter.js"></script>
+  <script src="calendar/lib/sort/group.js"></script>
+  <script src="calendar/lib/sort/groups.js"></script>
 
   <!-- Facebook code challenge driver -->
   <script src="index.js"></script>
 
   <!-- Startup demo -->
   <script>
-    var howMany = 20;
+    var howMany = 7;
     var events = [];
     var start;
     var end;
+    var height;
 
     while (howMany--) {
-      start = parseInt(Math.random() * 720);
-      end = start + parseInt(Math.random() * (720 - start));
+      height = (Math.random() * 0.25 + 0.05) * 720;
+      start = parseInt(Math.random() * (720 - height));
+      end = start + height;
       events.push({ start: start, end: end });
     }
 

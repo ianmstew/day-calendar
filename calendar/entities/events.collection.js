@@ -1,4 +1,4 @@
-(function (Backbone, Calendar) {
+(function (Backbone, Calendar, _) {
 
   var EventsCollection = Backbone.Collection.extend({
 
@@ -9,9 +9,10 @@
 
     // Arrange models into columns and save column data on each model
     columnSort: function () {
-      Calendar.Util.sorter.columnSort(this.models);
+      var sorter = new Calendar.Sort.Sorter(this.models);
+      sorter.columnSort();
     }
   });
 
   Calendar.Entities.EventsCollection = EventsCollection;
-})(Backbone, Calendar);
+})(this.Backbone, this.Calendar, this._);

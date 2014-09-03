@@ -14,7 +14,11 @@
       var _events = _.map(events, _.clone);
       this.dayPresenter.present({ events: _events });
     }
+  }, {
+
+    // Nested namespace as a class property
+    Sort: {}
   });
 
   root.Calendar = Calendar;
-})(this, Backbone, jQuery, _);
+})(this, this.Backbone, this.jQuery, this._);

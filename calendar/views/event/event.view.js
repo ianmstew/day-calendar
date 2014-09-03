@@ -9,10 +9,10 @@
 
     // Render at appropriate size and position
     resetPosition: function () {
-      var colWidthPercent = 1 / this.model.get('numCols') * 100;
+      var colWidthPercent = 1 / this.model.getNumCols() * 100;
       this.$el.css({
         top: this.model.get('start') + 'px',
-        left: (this.model.get('col') - 1) * colWidthPercent + '%',
+        left: (this.model.getCol() - 1) * colWidthPercent + '%',
         height: this.model.get('end') - this.model.get('start') + 'px',
         width: colWidthPercent + '%'
       });
@@ -26,4 +26,4 @@
   });
 
   Calendar.Views.EventView = EventView;
-})(Backbone, Calendar, jQuery, _);
+})(this.Backbone, this.Calendar, this.jQuery, this._);

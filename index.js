@@ -12,4 +12,4 @@
   }
 
   root.layOutDay = layOutDay;
-})(this, Calendar);
+})(this, this.Calendar);

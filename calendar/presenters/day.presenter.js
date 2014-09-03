@@ -40,4 +40,4 @@
   });
 
   Calendar.Presenters.DayPresenter = DayPresenter;
-})(Backbone, Calendar, jQuery, _);
+})(this.Backbone, this.Calendar, this.jQuery, this._);

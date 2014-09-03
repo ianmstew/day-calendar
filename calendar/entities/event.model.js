@@ -1,14 +1,41 @@
-(function (Backbone, Calendar) {
+(function (Backbone, Calendar, _) {
 
   var EventModel = Backbone.Model.extend({
 
+    // Computed properties, stored outside of model attributes for performance
+    // (avoids costly Backbone event logic while inside the sort algorithm)
+    _col: null,
+    _numCols: null,
+
     defaults: {
       start: null,
-      end: null,
+      end: null
+    },
 
-      // Computed properties
-      col: null,
-      numCols: null
+    initialize: function () {
+      this._col = 0;
+      this._numCols = 1;
+    },
+
+    setCol: function (col) {
+      this._col = col;
+    },
+
+    setNumCols: function (numCols) {
+      this._numCols = numCols;
+    },
+
+    getCol: function () {
+      return this._col;
+    },
+
+    getNumCols: function () {
+      return this._numCols;
+    },
+
+    // Assumes following.start >= this.start
+    intersectsFollowing: function (following) {
+      return this.get('end') >= following.get('start');
     },
 
     // Sanity check data
@@ -23,16 +50,14 @@
       }
     },
 
-    // Return whether this model's start/end intersects with the given model
-    intersect: function (model) {
-      return (this.get('start') >= model.get('start') &&
-              this.get('start') <= model.get('end'))
-              ||
-             (this.get('end') >= model.get('start') &&
-              this.get('end') <= model.get('end'))
-              ||
-             (this.get('start') <= model.get('start') &&
-              this.get('end') >= model.get('end'));
+    // Inline computed properties for the view
+    toJSON: function () {
+      var data = EventModel.__super__.toJSON.apply(this, arguments);
+      _.extend(data, {
+        col: this.getCol(),
+        numCols: this.getNumCols()
+      });
+      return data;
     },
 
     toString: function () {
@@ -41,4 +66,4 @@
   });
 
   Calendar.Entities.EventModel = EventModel;
-})(Backbone, Calendar);
+})(this.Backbone, this.Calendar, this._);

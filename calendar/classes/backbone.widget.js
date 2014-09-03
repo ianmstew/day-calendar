@@ -27,7 +27,6 @@
     Views: {},
     Entities: {},
     Presenters: {},
-    Util: {},
 
     // Inheritance convenience method
     extend: Backbone.Model.extend
@@ -35,4 +34,4 @@
 
   // Extend Backbone
   Backbone.Widget = Widget;
-})(Backbone, jQuery, _);
+})(this.Backbone, this.jQuery, this._);

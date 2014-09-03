@@ -73,4 +73,4 @@
 
   // Extend Backbone
   Backbone.Presenter = Presenter;
-})(Backbone, jQuery, _);
+})(this.Backbone, this.jQuery, this._);

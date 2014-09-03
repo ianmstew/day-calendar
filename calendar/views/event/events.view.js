@@ -54,4 +54,4 @@
   });
 
   Calendar.Views.EventsView = EventsView;
-})(Backbone, Calendar, jQuery, _);
+})(this.Backbone, this.Calendar, this.jQuery, this._);
