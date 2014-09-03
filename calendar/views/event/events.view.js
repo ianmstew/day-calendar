@@ -17,7 +17,7 @@
     // Render collection of views
     render: function () {
       var $eventsBuffer = $('<div></div>');
-      this.collection.arrangeColumns();
+      this.collection.columnSort();
 
       // Clear view
       this.removeEventViews();

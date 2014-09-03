@@ -35,10 +35,10 @@
     Event
   </script>
 
-  <!-- While Backbone is sufficient for this small demo, were the app to grow much
-       larger, an additional framework like Backbone.Marionette would be beneficial.
+  <!-- While Backbone is sufficient for this small demo, were the app to grow any
+       larger an additional framework like Backbone.Marionette would be beneficial.
        In fact, this widget's view classes have a good bit of boilerplate that could
-       be avoided with the addition of Backbone.Marionette. I used Backbone to
+       be avoided with the addition of Backbone.Marionette. I chose Backbone to
        demonstrate my grasp of the fundamental issues surrounding view management. -->
 
   <!-- Libraries -->
@@ -60,15 +60,22 @@
   <script src="calendar/views/event/event.view.js"></script>
 
   <!-- Facebook code challenge driver -->
-  <script src="fb-code-challenge.js"></script>
+  <script src="index.js"></script>
 
   <script>
-    layOutDay([
-      { start: 560, end: 620 },
-      { start: 540, end: 600 },
-      { start: 30, end: 150 },
-      { start: 610, end: 670 }
-    ]);
+    var howMany = 10;
+    var events = [];
+    var start;
+    var end;
+
+    while (howMany--) {
+      start = parseInt(Math.random() * 720);
+      end = start + parseInt(Math.random() * (720 - start));
+      events.push({ start: start, end: end });
+    }
+
+    console.log(events);
+    layOutDay([{start:17, end:348}, {start:126, end:152}, {start:271, end:447}, {start:390, end:455}, {start:443, end:584}, {start:451, end:461}, {start:460, end:504}, {start:485, end:582}, {start:499, end:571}, {start:604, end:714}]);
   </script>
 </body>
 </html>

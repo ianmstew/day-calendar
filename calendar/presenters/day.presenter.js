@@ -24,10 +24,16 @@
       }
 
       // If view is already shown, collection reset will trigger re-render
+      this.eventsCollection.off('invalid');
+      this.eventsCollection.on('invalid', this.onInvalid);
       this.eventsCollection.reset(events, { validate: true });
 
       // No effect if already showing
       this.show(this.dayView);
+    },
+
+    onInvalid: function (events, reason, badEvent) {
+      console.warn('Invalid model, skipping. ' + reason);
     }
   });
 
