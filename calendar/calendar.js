@@ -17,7 +17,8 @@
   }, {
 
     // Nested namespace as a class property
-    Sort: {}
+    Sort: {},
+    Util: {}
   });
 
   root.Calendar = Calendar;

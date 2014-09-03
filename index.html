@@ -22,16 +22,25 @@
        Both are too heavy for this demo; hence, templates are inlined below.
        They are, however, compiled only once - at script load time. -->
 
-  <!-- Calendar day template -->
+  <!-- Day template -->
   <script id="day-view" type="text/html">
-    <h1>Day</h1>
-    <h2>Events</h2>
-    <div class="events-container js-events">
-    </div>
+    <div class="ruler-container js-ruler"></div>
+    <div class="events-container js-events"></div>
   </script>
 
-  <!-- Calendar entry template -->
+  <!-- Entry template -->
   <script id="event-view" type="text/html">
+  </script>
+
+  <!-- Ruler template -->
+  <script id="ruler-view" type="text/html">
+    <% _.each(times, function (time) { %>
+      <div class="time <% if (time.majorTick) { %>time-major<% } else { %>time-minor<% } %>"
+           style="height: <%- tickHeight %>">
+        <span class="time-string"><%- time.timeStr %></span>
+        <span class="time-am-pm"><%- time.amPm %></span>
+      </div>
+    <% }); %>
   </script>
 
   <!-- While Backbone is sufficient for this small demo, were the app to grow any
@@ -52,11 +61,14 @@
   <!-- Widget -->
   <script src="calendar/calendar.js"></script>
   <script src="calendar/presenters/day.presenter.js"></script>
+  <script src="calendar/entities/ruler.model.js"></script>
   <script src="calendar/entities/event.model.js"></script>
   <script src="calendar/entities/events.collection.js"></script>
-  <script src="calendar/views/day/day.view.js"></script>
-  <script src="calendar/views/event/events.view.js"></script>
-  <script src="calendar/views/event/event.view.js"></script>
+  <script src="calendar/views/day.view.js"></script>
+  <script src="calendar/views/ruler.view.js"></script>
+  <script src="calendar/views/events.view.js"></script>
+  <script src="calendar/views/event.view.js"></script>
+  <script src="calendar/lib/util/time.js"></script>
   <script src="calendar/lib/sort/sorter.js"></script>
   <script src="calendar/lib/sort/group.js"></script>
   <script src="calendar/lib/sort/groups.js"></script>
