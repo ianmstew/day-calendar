@@ -9,7 +9,9 @@
 
     defaults: {
       start: null,
-      end: null
+      end: null,
+      title: 'Sample Item',
+      location: 'Sample Location'
     },
 
     initialize: function () {

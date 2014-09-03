@@ -5,14 +5,14 @@
     // Precompile template on script load
     template: _.template($('#day-view').html()),
 
-    // Collection for events
+    // Collection of events
     eventsCollection: null,
 
     // Child view containers
     eventsContainer: '.js-events',
     rulerContainer: '.js-ruler',
 
-    // Current events view, if one exists
+    // Child views
     eventsView: null,
     rulerView: null,
 
