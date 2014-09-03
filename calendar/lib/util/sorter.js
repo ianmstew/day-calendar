@@ -1,8 +1,13 @@
 (function (Calendar) {
 
+  // The sort algorithm below is my own invention, but after having thoroughly explored this
+  // path I found it excessively complex and more iterative than should be necessary. Given a
+  // second attempt, I would explore using an Interval Tree.
+  // http://en.wikipedia.org/wiki/Interval_tree
   var sorter = {
 
-    // Arrange models into columns and save column data on each model
+    // Arrange models into columns and save column data on each model. Assumes models are
+    // pre-ordered by start time.
     columnSort: function (models) {
       var cols = [];
       var _models = _.clone(models);
