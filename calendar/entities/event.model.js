@@ -11,6 +11,7 @@
       numCols: null
     },
 
+    // Sanity check data
     validate: function (attrs) {
       if (attrs.end === attrs.start) {
         return 'Events may not be zero width in time: ' +
@@ -22,6 +23,7 @@
       }
     },
 
+    // Return whether this model's start/end intersects with the given model
     intersect: function (model) {
       return (this.get('start') >= model.get('start') &&
               this.get('start') <= model.get('end'))

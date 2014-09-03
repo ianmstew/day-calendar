@@ -1,5 +1,6 @@
 (function (Backbone, Calendar, $, _) {
 
+  // Maintain an EventCollection, bind to a DayView, and show
   var DayPresenter = Backbone.Presenter.extend({
 
     // Current view, if one exists
@@ -16,7 +17,7 @@
     onPresent: function (options) {
       var events = (options || {}).events;
 
-      // Successive presentations with not re-render DayView
+      // Successive presentations avoid re-rendering view
       if (!this.dayView) {
         this.dayView = new Calendar.Views.DayView({
           eventsCollection: this.eventsCollection
@@ -24,7 +25,7 @@
       }
 
       // If view is already shown, collection reset will trigger re-render
-      this.eventsCollection.off('invalid');
+      this.eventsCollection.off('invalid', this.onInvalid);
       this.eventsCollection.on('invalid', this.onInvalid);
       this.eventsCollection.reset(events, { validate: true });
 
@@ -32,6 +33,7 @@
       this.show(this.dayView);
     },
 
+    // Warn on skipped models (of course, production app would not use console)
     onInvalid: function (events, reason, badEvent) {
       console.warn('Invalid model, skipping. ' + reason);
     }

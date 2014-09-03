@@ -58,12 +58,14 @@
   <script src="calendar/views/day/day.view.js"></script>
   <script src="calendar/views/event/events.view.js"></script>
   <script src="calendar/views/event/event.view.js"></script>
+  <script src="calendar/lib/util/sorter.js"></script>
 
   <!-- Facebook code challenge driver -->
   <script src="index.js"></script>
 
+  <!-- Startup demo -->
   <script>
-    var howMany = 10;
+    var howMany = 20;
     var events = [];
     var start;
     var end;
@@ -74,8 +76,7 @@
       events.push({ start: start, end: end });
     }
 
-    console.log(events);
-    layOutDay([{start:17, end:348}, {start:126, end:152}, {start:271, end:447}, {start:390, end:455}, {start:443, end:584}, {start:451, end:461}, {start:460, end:504}, {start:485, end:582}, {start:499, end:571}, {start:604, end:714}]);
+    layOutDay(events);
   </script>
 </body>
 </html>

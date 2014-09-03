@@ -1,6 +1,8 @@
 (function (Backbone, $, _) {
 
   // A Presenter manages a single region and provides display logic hooks in concert.
+  // The chief role of a Presenter is to acquire data and pass to a view, while handling
+  // any additional higher level display logic or interfaces with the app at large.
   //
   // Note: To expand architecture to multiple presenters that share a region, a Region
   // element would be necessary to prevent memory leak; for example, Marionette.Region.
@@ -15,6 +17,7 @@
     if (this.initialize) this.initialize(options);
   }
 
+  // Instance properties
   _.extend(Presenter.prototype, Backbone.Events, {
 
     // Presenter will render into this region
@@ -35,6 +38,7 @@
         this.$region = $(this.region);
       }
 
+      // Present complete
       this.trigger('present', options);
       if (this.onPresent) this.onPresent(options);
     },
@@ -54,11 +58,13 @@
         this._view = view;
       }
 
+      // Show complete
       this.trigger('show', view, options);
       if (this.onShow) this.onShow(options);
     }
   });
 
+  // Class properties
   _.extend(Presenter, {
 
     // Inheritance convenience method
