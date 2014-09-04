@@ -16,7 +16,12 @@
     },
 
     render: function () {
-      this.$el.html(this.template(this.model.toJSON()));
+      var data = this.model.toJSON();
+      this.$el.css({
+        height: data.height + 'px',
+        marginTop: -data.timeHeight / 2 + 'px'
+      });
+      this.$el.html(this.template(data));
       return this;
     }
   });

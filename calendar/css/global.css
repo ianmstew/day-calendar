@@ -1,7 +1,19 @@
-html {
-  box-sizing: border-box;
-}
-
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: "Lucida Grande", "Tahoma", "sans-serif";
+}
+
+/* http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
 }

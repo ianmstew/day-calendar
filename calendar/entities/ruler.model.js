@@ -1,7 +1,7 @@
 (function (Backbone, Calendar, _) {
 
-  // Given a start and end time, this model generates time indices with
-  // 12-hour formatted time, whether a whole hour tick, and am/pm.
+  // Given a start and end time, this model generates 12-hour (am/pm) time labels at
+  // a specified increment
   var RulerModel = Backbone.Model.extend({
 
     defaults: {
@@ -11,12 +11,15 @@
       // end hour in 24-hour format
       end: null,
 
-      // increment for indices in minutes
+      // increment for times in minutes
       increment: 30,
+
+      baseHeight: 720,
 
       // calculated
       times: null,
-      tickHeight: null
+      height: null,
+      timeHeight: null
     },
 
     // Generate view-usable time index data
@@ -48,9 +51,13 @@
     toJSON: function () {
       var data = RulerModel.__super__.toJSON.apply(this, arguments);
       var times = this.calculateTimes();
+      var baseTimeHeight = data.baseHeight / times.length;
+      var height = data.baseHeight + baseTimeHeight;
+      var timeHeight = height / times.length;
 
       data.times = times;
-      data.tickHeight = 1 / times.length * 100 + '%';
+      data.height = height;
+      data.timeHeight = timeHeight;
 
       return data;
     }

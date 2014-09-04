@@ -1,0 +1,9 @@
+.main-container {
+  text-align: center;
+  margin-top: 35px;
+}
+
+main {
+  display: inline-block;
+  text-align: left;
+}

@@ -19,7 +19,7 @@
       var hours = ((hours24 + 11) % 12) + 1;
 
       formatted = [
-        [this._addZero(hours), this._addZero(this.date.getMinutes())].join(':'),
+        [hours, this._addZero(this.date.getMinutes())].join(':'),
         hours24 > 11 ? 'pm' : 'am'
       ].join(' ');
 

@@ -1,0 +1,37 @@
+.ruler-container {
+  float: left;
+  height: 720px;
+}
+
+.ruler {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.time {
+  font-size: 14px;
+  color: #686868;
+  text-align: right;
+}
+
+.time-hour-min {
+  font-weight: bold;
+  margin-right: 2px;
+}
+
+.time-am-pm {
+  font-size: 10px;
+  color: #BFBFBF;
+  text-transform: uppercase;
+}
+
+.time-minor .time-hour-min {
+  font-size: 10px;
+  font-weight: normal;
+  color: #BFBFBF;
+  text-transform: uppercase;
+}
+
+.time-minor .time-am-pm {
+  display: none;
+}

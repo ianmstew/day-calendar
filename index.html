@@ -9,13 +9,17 @@
   <title>Day Calendar</title>
   <link rel="stylesheet" href="calendar/vendor/css/normalize.css">
   <link rel="stylesheet" href="calendar/css/global.css">
+  <link rel="stylesheet" href="calendar/css/main.css">
   <link rel="stylesheet" href="calendar/css/day.css">
   <link rel="stylesheet" href="calendar/css/event.css">
+  <link rel="stylesheet" href="calendar/css/ruler.css">
 </head>
 <body>
   <!-- Target render region for widget; see index.js -->
-  <main id="calendar-region">
-  </main>
+  <div class="main-container">
+    <main id="calendar-region" class="clearfix">
+    </main>
+  </div>
 
   <!-- Prefer templates to reside in view folder, e.g., views/entry/entry.view.tpl,
        except that requires an async text loader like require.js or a build step.
@@ -40,8 +44,8 @@
   <script id="ruler-view" type="text/html">
     <% _.each(times, function (time) { %>
       <div class="time <% if (time.majorTick) { %>time-major<% } else { %>time-minor<% } %>"
-           style="height: <%- tickHeight %>">
-        <span class="time-string"><%- time.timeStr %></span>
+           style="height: <%- timeHeight %>px; line-height: <%- timeHeight %>px">
+        <span class="time-hour-min"><%- time.timeStr %></span>
         <span class="time-am-pm"><%- time.amPm %></span>
       </div>
     <% }); %>
@@ -89,13 +93,14 @@
     var height;
 
     while (howMany--) {
-      height = (Math.random() * 0.25 + 0.05) * 720;
+      height = (Math.random() * 0.25 + 0.07) * 720;
       start = parseInt(Math.random() * (720 - height));
       end = start + height;
       events.push({ start: start, end: end });
     }
 
     layOutDay(events);
+    layOutDay([ {start: 30, end: 150}, {start: 540, end: 600}, {start: 560, end: 620}, {start: 610, end: 670} ])
   </script>
 </body>
 </html>
