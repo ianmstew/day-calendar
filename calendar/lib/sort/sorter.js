@@ -10,7 +10,7 @@
   // Approach:
   // 1. Begin with list of models sorted by start time, which simplifies intersection comparisons
   // 2. Interate through list of models, pushing any that overlap into the next column
-  //    - While iterating, group models into proper sets who share the same number of columns,
+  //    - While iterating, group models into sets who share the same number of columns,
   //      by virtue of adjacency.
   //    - Permit cascading adjacency, such that intermediary columns have a transitive effect.
   // 4. Repeat for the next column
@@ -48,7 +48,7 @@
       return cols;
     },
 
-    // Adds next to curr's group. Groups are proper sets of models that will inherit the same
+    // Adds next to curr's group. Groups are sets of models that will inherit the same
     // column width
     _addToMyGroup: function (curr, next) {
       var groupId = curr.groupId;
@@ -102,7 +102,7 @@
         // I didn't fit into the current column, therefore I am not a pivot
         if (!curr) continue;
 
-        this._scanFollowing(curr, models, i + 1, cols, currCol, nextCol);
+        this._scanFollowing(curr, models, i + 1, colCount, currCol, nextCol);
       }
 
       // Add this column to the columns array, then recurse of any models remain
@@ -111,8 +111,7 @@
     },
 
     // Scan 'curr' against following models, but only while following models intersect
-    _scanFollowing: function (curr, models, start, cols, currCol, nextCol) {
-      var colCount = cols.length + 1;
+    _scanFollowing: function (curr, models, start, colCount, currCol, nextCol) {
       var next;
 
       // Only compare against the models that come after me

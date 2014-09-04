@@ -1,6 +1,6 @@
 (function (Calendar, _) {
 
-  // A proper set of models sharing the same column width
+  // A set of models sharing the same column width
   function Group() {
     this.models = {};
     this.numCols = 0;
