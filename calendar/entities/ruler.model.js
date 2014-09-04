@@ -5,15 +5,17 @@
   var RulerModel = Backbone.Model.extend({
 
     defaults: {
-      // start hour in 24-hour format
+      // Start hour in 24-hour format
       start: null,
 
-      // end hour in 24-hour format
+      // End hour in 24-hour format
       end: null,
 
-      // increment for times in minutes
+      // Increment for times in minutes
       increment: 30,
 
+      // Height of frame this ruler should measure.
+      // (Start/end time will show slightly outside of frame, just as in a physical ruler)
       baseHeight: 720,
 
       // calculated
@@ -50,7 +52,12 @@
     // Embed calculated data in output to views
     toJSON: function () {
       var data = RulerModel.__super__.toJSON.apply(this, arguments);
+
+      // The array of times
       var times = this.calculateTimes();
+
+      // Extra calculations to draw a picture perfect ruler no matter the baseHeight
+      // or increment settings.  Really, try changing increment to 15, 45, or 60 :)
       var baseTimeHeight = data.baseHeight / times.length;
       var height = data.baseHeight + baseTimeHeight;
       var timeHeight = height / times.length;

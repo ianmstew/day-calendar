@@ -17,10 +17,14 @@
 
     render: function () {
       var data = this.model.toJSON();
+
+      // Scale and position the ruler like a physical ruler--time labels should "straddle"
+      // the exact time mark
       this.$el.css({
         height: data.height + 'px',
         marginTop: -data.timeHeight / 2 + 'px'
       });
+
       this.$el.html(this.template(data));
       return this;
     }
