@@ -7,3 +7,4 @@ from 9:00am to 9:00pm.
 TODO:
 - Verify times are >= 0 and <= 720
 - Unit tests
+- Form fields to add/remove events and change ruler scaling
