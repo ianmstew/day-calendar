@@ -30,14 +30,14 @@
   // Warn when variables are defined but never used.
   "unused": "vars",
 
-  // Avoid really long function defintions
-  "maxparams": 6,
+  // Avoid long function definitions
+  "maxparams": 4,
 
   // Prevent deep nesting
-  "maxdepth": 3,
+  "maxdepth": 2,
 
   // Concise functions
-  "maxstatements": 25,
+  "maxstatements": 15,
 
   // Prevent excessive branching
   "maxcomplexity": 6

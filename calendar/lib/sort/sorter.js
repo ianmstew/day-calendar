@@ -1,4 +1,5 @@
 (function (Calendar, _) {
+  /* jshint maxparams: 6 */
 
   // Algorithm that meets the following requirements, to the very best of my interpretation:
   // 1. No events may visually overlap.
