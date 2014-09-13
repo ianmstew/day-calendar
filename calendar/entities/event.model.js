@@ -44,10 +44,10 @@
     validate: function (attrs) {
       var error;
       
-      if (atts.start < 0) {
+      if (attrs.start < 0) {
         error = 'Events may not start earlier than 9:00am';
       }
-      else if (atts.end > 720) {
+      else if (attrs.end > 720) {
         error = 'Events may not end after 9:00pm';
       }
       else if (attrs.end === attrs.start) {
