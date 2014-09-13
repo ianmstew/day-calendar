@@ -42,14 +42,22 @@
 
     // Sanity check data
     validate: function (attrs) {
-      if (attrs.end === attrs.start) {
-        return 'Events may not be zero width in time: ' +
-            '[' + attrs.start + ', ' + attrs.end + ']';
+      var error;
+      
+      if (atts.start < 0) {
+        error = 'Events may not start earlier than 9:00am';
       }
-      if (attrs.end < attrs.start) {
-        return 'Events may not end before they begin: ' +
-            '[' + attrs.start + ', ' + attrs.end + ']';
+      else if (atts.end > 720) {
+        error = 'Events may not end after 9:00pm';
       }
+      else if (attrs.end === attrs.start) {
+        error = 'Events may not be zero width in time';
+      }
+      else if (attrs.end < attrs.start) {
+        error = 'Events may not end before they begin';
+      }
+      
+      if (error) return error + ': ' + '[' + attrs.start + ', ' + attrs.end + ']';
     },
 
     // Inline computed properties for the view
