@@ -39,3 +39,19 @@
   line-height: 16px;
   color: #A0A0A0;
 }
+
+.event-remove {
+  display: block;
+  position: absolute;
+  right: 8px;
+  top: 6px;
+  color: #D6D6D6;
+}
+
+.event-remove:hover,
+.event-remove:focus,
+.event-remove:active {
+  color: #A0A0A0;
+  cursor: pointer;
+  outline: 0;
+}

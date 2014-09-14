@@ -23,6 +23,9 @@
   // Class properties
   _.extend(Widget, {
 
+    // Override me for Widget-specific event bus
+    channel: null,
+
     // Nested namespaces
     Views: {},
     Entities: {},

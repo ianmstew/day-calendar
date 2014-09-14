@@ -1,5 +1,6 @@
 (function (root, Backbone, $, _) {
 
+  // The top level widget
   var Calendar = Backbone.Widget.extend({
 
     dayPresenter: null,
@@ -8,6 +9,9 @@
       this.dayPresenter = new Calendar.Presenters.DayPresenter({
         region: this.region
       });
+
+      // Start entities module
+      Calendar.CalendarEntities.start();
     },
 
     renderDay: function (events) {
@@ -16,9 +20,13 @@
     }
   }, {
 
+    // Backbone.Radio channel name for this widget's events
+    channel: Backbone.Radio.channel('calendar'),
+
     // Nested namespace as a class property
     Sort: {},
-    Util: {}
+    Util: {},
+    Mixin: {}
   });
 
   root.Calendar = Calendar;

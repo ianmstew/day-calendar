@@ -7,6 +7,10 @@
 
     className: 'event',
 
+    events: {
+      'click .js-remove': 'removeClicked'
+    },
+
     // Render at appropriate size and position
     resetPosition: function () {
       var colWidthPercent = 1 / this.model.getNumCols() * 100;
@@ -22,6 +26,10 @@
       this.resetPosition();
       this.$el.html(this.template(this.model.toJSON()));
       return this;
+    },
+
+    removeClicked: function () {
+      Calendar.channel.command('remove:event', this.model);
     }
   });
 

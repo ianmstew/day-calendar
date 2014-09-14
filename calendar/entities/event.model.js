@@ -43,7 +43,7 @@
     // Sanity check data
     validate: function (attrs) {
       var error;
-      
+
       if (attrs.start < 0) {
         error = 'Events may not start earlier than 9:00am';
       }
@@ -56,7 +56,7 @@
       else if (attrs.end < attrs.start) {
         error = 'Events may not end before they begin';
       }
-      
+
       if (error) return error + ': ' + '[' + attrs.start + ', ' + attrs.end + ']';
     },
 

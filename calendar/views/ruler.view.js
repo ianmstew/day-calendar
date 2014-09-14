@@ -9,10 +9,12 @@
     className: 'ruler',
 
     initialize: function () {
-      this.model = new Calendar.Entities.RulerModel({
+      Calendar.channel.command('set:ruler', {
         start: 9,
         end: 21
       });
+      this.model = Calendar.channel.request('ruler');
+      this.model.on('change', this.render.bind(this));
     },
 
     render: function () {

@@ -11,10 +11,12 @@
     // Child view containers
     eventsContainer: '.js-events',
     rulerContainer: '.js-ruler',
+    formContainer: '.js-form',
 
     // Child views
     eventsView: null,
     rulerView: null,
+    formView: null,
 
     initialize: function (options) {
       this.eventsCollection = (options || {}).eventsCollection;
@@ -22,17 +24,13 @@
 
     // Render myself
     render: function () {
-      var $eventsContainer;
-      var $rulerContainer;
-
       // Render the template
       this.$el.html(this.template());
 
-      // Render children into containers scoped on this view
-      $eventsContainer = this.$(this.eventsContainer);
-      $rulerContainer = this.$(this.rulerContainer);
-      this.renderEvents($eventsContainer);
-      this.renderRuler($rulerContainer);
+      // Render child views
+      this.renderEvents();
+      this.renderRuler();
+      this.renderForm();
 
       return this;
     },
@@ -48,13 +46,19 @@
       });
 
       // Render the child view
-      $eventsContainer.append(this.eventsView.render().$el);
+      this.$(this.eventsContainer).append(this.eventsView.render().$el);
     },
 
     renderRuler: function ($rulerContainer) {
       if (this.rulerView) this.rulerView.remove();
       this.rulerView = new Calendar.Views.RulerView();
-      $rulerContainer.append(this.rulerView.render().$el);
+      this.$(this.rulerContainer).append(this.rulerView.render().$el);
+    },
+
+    renderForm: function ($formContainer) {
+      if (this.formView) this.formView.remove();
+      this.formView = new Calendar.Views.FormView();
+      this.$(this.formContainer).append(this.formView.render().$el);
     },
 
     // Remove myself first to reduce reflows, then properly remove children

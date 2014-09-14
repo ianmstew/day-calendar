@@ -10,6 +10,8 @@ to a namespaced global, and no assets build/optimization step.  The goal is to d
 front end architecture and a custom "best fit" algorthm using a simple Backbone widget.
 
 TODO:
-- Fix model undefined when no models pass validation
+- Fix model undefined when no models pass validation or empty array passed
+- Add empty calendar state
+- Fix model undefined when attempting to remove last model
+- Style form
 - Unit tests
-- Form fields to add/remove events and change ruler scaling

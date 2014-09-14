@@ -6,28 +6,22 @@
     // Current view, if one exists
     dayView: null,
 
-    // Collection of events
-    eventsCollection: null,
-
-    initialize: function () {
-      this.eventsCollection = new Calendar.Entities.EventsCollection();
-    },
-
     // Present the day of events, only re-rendering if necessary
     onPresent: function (options) {
       var events = (options || {}).events;
+      var eventsCollection = Calendar.channel.request('events');
 
       // Successive presentations avoid re-rendering view
       if (!this.dayView) {
         this.dayView = new Calendar.Views.DayView({
-          eventsCollection: this.eventsCollection
+          eventsCollection: eventsCollection
         });
       }
 
       // If view is already shown, collection reset will trigger re-render
-      this.eventsCollection.off('invalid', this.onInvalid);
-      this.eventsCollection.on('invalid', this.onInvalid);
-      this.eventsCollection.reset(events, { validate: true });
+      eventsCollection.off('invalid', this.onInvalid);
+      eventsCollection.on('invalid', this.onInvalid);
+      eventsCollection.reset(events, { validate: true });
 
       // No effect if already showing
       this.show(this.dayView);

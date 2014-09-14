@@ -30,11 +30,13 @@
   <script id="day-view" type="text/html">
     <div class="ruler-container js-ruler"></div>
     <div class="events-container js-events"></div>
+    <div class="form-container js-form"></div>
   </script>
 
   <!-- Entry template -->
   <script id="event-view" type="text/html">
     <div class="event-inner">
+      <a class="event-remove js-remove" tabindex="0">×</a>
       <div class="event-title"><%- title %></div>
       <div class="event-location"><%- location %></div>
     </div>
@@ -51,6 +53,15 @@
     <% }); %>
   </script>
 
+  <script id="form-view" type="text/html">
+    <label><input type="radio" name="ruler-increment" value="15">15 Minutes</label>
+    <label><input type="radio" name="ruler-increment" value="30">30 Minutes</label>
+    <label><input type="radio" name="ruler-increment" value="60">60 Minutes</label>
+    <label><input type="text" name="start-time">Start Time</label>
+    <label><input type="text" name="end-time">End Time</label>
+    <button name="add-event">Add Event</button>
+  </script>
+
   <!-- While Backbone is sufficient for this small demo, were the app to grow any
        larger an additional framework like Backbone.Marionette would be beneficial.
        In fact, this widget's view classes have a good bit of boilerplate that could
@@ -61,19 +72,22 @@
   <script src="calendar/vendor/js/jquery.js"></script>
   <script src="calendar/vendor/js/underscore.js"></script>
   <script src="calendar/vendor/js/backbone.js"></script>
+  <script src="calendar/vendor/js/backbone.radio.js"></script>
 
   <!-- Custom classes -->
-  <script src="calendar/classes/backbone.widget.js"></script>
-  <script src="calendar/classes/backbone.presenter.js"></script>
+  <script src="calendar/lib/classes/backbone.widget.js"></script>
+  <script src="calendar/lib/classes/backbone.presenter.js"></script>
 
   <!-- Widget -->
   <script src="calendar/calendar.js"></script>
+  <script src="calendar/calendar.entities.js"></script>
   <script src="calendar/presenters/day.presenter.js"></script>
   <script src="calendar/entities/ruler.model.js"></script>
   <script src="calendar/entities/event.model.js"></script>
   <script src="calendar/entities/events.collection.js"></script>
   <script src="calendar/views/day.view.js"></script>
   <script src="calendar/views/ruler.view.js"></script>
+  <script src="calendar/views/form.view.js"></script>
   <script src="calendar/views/events.view.js"></script>
   <script src="calendar/views/event.view.js"></script>
   <script src="calendar/lib/util/time.js"></script>
