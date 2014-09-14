@@ -1,3 +1,28 @@
-.day {
-  
+#calendar-region {
+  white-space: nowrap;
+}
+
+.calendar-container {
+  display: inline-block;
+}
+
+.ruler-container {
+  display: inline-block;
+  height: 720px;
+}
+
+.events-container {
+  display: inline-block;
+  height: 720px;
+  width: 620px;
+  border-left: 1px solid #D6D6D6;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #ECECEC;  
+  vertical-align: top;
+}
+
+.form-container {
+  display: inline-block;
+  vertical-align: top;
 }

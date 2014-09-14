@@ -10,7 +10,7 @@
 
     start: function () {
       _.bindAll(this,
-          'getRuler', 'setRuler', 'changeRulerIncrement',
+          'getRuler', 'changeRulerIncrement',
           'getEvents', 'addEvent', 'removeEvent');
 
       this.eventsCollection = new Calendar.Entities.EventsCollection();
@@ -18,9 +18,10 @@
 
       Calendar.channel.reply('events', this.getEvents);
       Calendar.channel.reply('ruler', this.getRuler);
-      Calendar.channel.comply('set:ruler', this.setRuler);
+
       Calendar.channel.comply('add:event', this.addEvent);
       Calendar.channel.comply('remove:event', this.removeEvent);
+
       Calendar.channel.comply('change:ruler:increment', this.changeRulerIncrement);
     },
 
@@ -37,16 +38,12 @@
       if (eventModel.isValid()) {
         this.eventsCollection.add(eventModel);
       } else {
-        console.warn(eventModel.validationError);
+        Calendar.channel.trigger('user:error', eventModel.validationError);
       }
     },
 
     removeEvent: function (eventModel) {
       this.eventsCollection.remove(eventModel);
-    },
-
-    setRuler: function (ruler) {
-      this.rulerModel.set(ruler);
     },
 
     changeRulerIncrement: function (rulerIncrement) {

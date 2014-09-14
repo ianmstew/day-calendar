@@ -4,14 +4,13 @@
   var FormView = Backbone.View.extend({
 
     // Precompile template on script load
-    template: _.template($('#form-view').html()),
+    template: _.template($('#forms-view').html()),
 
-    className: 'form',
-    tagName: 'form',
+    className: 'forms',
     rulerModel: null,
 
     events: {
-      'click button[name=add-event]': 'addEventClicked',
+      'submit .js-form-event': 'submitEvent',
       'change input[name=ruler-increment]': 'rulerIncrementChanged'
     },
 
@@ -25,10 +24,15 @@
       return this;
     },
 
-    addEventClicked: function (evt) {
-      var event = { start: this.ui.startTime.val(), end: this.ui.endTime.val() };
-      Calendar.channel.command('add:event', event);
+    submitEvent: function (evt) {
       evt.preventDefault();
+      var event = {
+        title:    this.$('input[name=title]').val() || undefined,
+        location: this.$('input[name=location]').val() || undefined,
+        start:    this.$('input[name=start-time]').val() || undefined,
+        end:      this.$('input[name=end-time]').val() || undefined
+      };
+      Calendar.channel.command('add:event', event);
     },
 
     rulerIncrementChanged: function (evt) {

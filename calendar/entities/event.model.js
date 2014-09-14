@@ -10,8 +10,8 @@
     defaults: {
       start: null,
       end: null,
-      title: 'Sample Item',
-      location: 'Sample Location'
+      title: 'No Title',
+      location: 'No Location'
     },
 
     initialize: function () {

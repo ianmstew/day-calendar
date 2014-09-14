@@ -19,8 +19,7 @@
       }
 
       // If view is already shown, collection reset will trigger re-render
-      eventsCollection.off('invalid', this.onInvalid);
-      eventsCollection.on('invalid', this.onInvalid);
+      eventsCollection.once('invalid', this.onInvalid);
       eventsCollection.reset(events, { validate: true });
 
       // No effect if already showing
@@ -29,7 +28,7 @@
 
     // Warn on skipped models (of course, production app would not use console)
     onInvalid: function (events, reason, badEvent) {
-      console.warn('Invalid model, skipping. ' + reason);
+      Calendar.channel.trigger('user:error', 'Invalid model, skipping. ' + reason);
     }
   });
 

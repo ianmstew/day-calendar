@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="calendar/css/day.css">
   <link rel="stylesheet" href="calendar/css/event.css">
   <link rel="stylesheet" href="calendar/css/ruler.css">
+  <link rel="stylesheet" href="calendar/css/form.css">
 </head>
 <body>
   <!-- Target render region for widget; see index.js -->
@@ -28,8 +29,10 @@
 
   <!-- Day template -->
   <script id="day-view" type="text/html">
-    <div class="ruler-container js-ruler"></div>
-    <div class="events-container js-events"></div>
+    <div class="calendar-container">
+      <div class="ruler-container js-ruler"></div>
+      <div class="events-container js-events"></div>
+    </div>
     <div class="form-container js-form"></div>
   </script>
 
@@ -53,13 +56,25 @@
     <% }); %>
   </script>
 
-  <script id="form-view" type="text/html">
-    <label><input type="radio" name="ruler-increment" value="15">15 Minutes</label>
-    <label><input type="radio" name="ruler-increment" value="30">30 Minutes</label>
-    <label><input type="radio" name="ruler-increment" value="60">60 Minutes</label>
-    <label><input type="text" name="start-time">Start Time</label>
-    <label><input type="text" name="end-time">End Time</label>
-    <button name="add-event">Add Event</button>
+  <script id="forms-view" type="text/html">
+    <form class="form-ruler">
+      <fieldset>
+        <legend>Ruler Increment</legend>
+        <label><input type="radio" name="ruler-increment" value="15">15 Minutes</label>
+        <label><input type="radio" name="ruler-increment" value="30">30 Minutes</label>
+        <label><input type="radio" name="ruler-increment" value="60">60 Minutes</label>
+      </fieldset>
+    </form>
+    <form class="form-event js-form-event">
+      <fieldset>
+        <legend>New Event</legend>
+        <label><input type="text" name="title">Title</label>
+        <label><input type="text" name="location">Location</label>
+        <label><input type="text" name="start-time">Start Time</label>
+        <label><input type="text" name="end-time">End Time</label>
+        <button name="add-event">Add Event</button>
+      </fieldset>
+    </form>
   </script>
 
   <!-- While Backbone is sufficient for this small demo, were the app to grow any
@@ -82,6 +97,7 @@
   <script src="calendar/calendar.js"></script>
   <script src="calendar/calendar.entities.js"></script>
   <script src="calendar/presenters/day.presenter.js"></script>
+  <script src="calendar/presenters/error.presenter.js"></script>
   <script src="calendar/entities/ruler.model.js"></script>
   <script src="calendar/entities/event.model.js"></script>
   <script src="calendar/entities/events.collection.js"></script>
@@ -113,7 +129,7 @@
       events.push({ start: start, end: end });
     }
 
-    layOutDay(events);
+    // layOutDay(events);
   </script>
 </body>
 </html>

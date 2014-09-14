@@ -17,6 +17,10 @@
   // 4. Repeat for the next column
   function Sorter(models) {
     this.models = models;
+    _.each(this.models, function (model) {
+      model.setCol(null);
+      model.setNumCols(null);
+    });
     this.groups = new Calendar.Sort.Groups();
   }
 
@@ -28,6 +32,8 @@
     // Arrange models into columns and saves column data on each model. Assumes models are
     // pre-ordered by start time.
     columnSort: function () {
+      if (!this.models.length) return;
+
       var cols = [];
 
       // groupId is used internally by the sort algorithm, therefore there is no need to store

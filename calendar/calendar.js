@@ -4,14 +4,18 @@
   var Calendar = Backbone.Widget.extend({
 
     dayPresenter: null,
+    errorPresenter: null,
 
     initialize: function () {
       this.dayPresenter = new Calendar.Presenters.DayPresenter({
         region: this.region
       });
+      this.errorPresenter = new Calendar.Presenters.ErrorPresenter();
 
       // Start entities module
       Calendar.CalendarEntities.start();
+
+      this.dayPresenter.present();
     },
 
     renderDay: function (events) {

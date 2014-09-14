@@ -1,0 +1,23 @@
+.forms {
+}
+
+.form-event {
+  margin-top: 20px;
+}
+
+.forms label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.forms input {
+  margin-right: 5px;
+}
+
+.forms input[type=text] {
+  width: 120px;
+}
+
+.form-ruler label:last-child {
+  margin-bottom: 0;
+}
