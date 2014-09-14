@@ -113,23 +113,5 @@
 
   <!-- Day Calendar demo driver -->
   <script src="index.js"></script>
-
-  <!-- Startup demo -->
-  <script>
-    var howMany = 7;
-    var events = [];
-    var start;
-    var end;
-    var height;
-
-    while (howMany--) {
-      height = (Math.random() * 0.25 + 0.07) * 720;
-      start = parseInt(Math.random() * (720 - height));
-      end = start + height;
-      events.push({ start: start, end: end });
-    }
-
-    // layOutDay(events);
-  </script>
 </body>
 </html>
