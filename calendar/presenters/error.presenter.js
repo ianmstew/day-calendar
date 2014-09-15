@@ -9,7 +9,13 @@
 
     // Implement this method to display general feedback on user error
     onUserError: function (error) {
-      console.warn(error);
+      var alertModel = new Calendar.Entities.AlertModel({
+        message: error
+      });
+      var alertView = new Calendar.Views.AlertView({
+        model: alertModel
+      });
+      this.show(alertView);
     }
   });
 

@@ -11,6 +11,7 @@
 
     events: {
       'submit .js-form-event': 'submitEvent',
+      'submit .js-form-clear': 'clearEvents',
       'change input[name=ruler-increment]': 'rulerIncrementChanged'
     },
 
@@ -27,12 +28,17 @@
     submitEvent: function (evt) {
       evt.preventDefault();
       var event = {
-        title:    this.$('input[name=title]').val() || undefined,
-        location: this.$('input[name=location]').val() || undefined,
-        start:    this.$('input[name=start-time]').val() || undefined,
-        end:      this.$('input[name=end-time]').val() || undefined
+        title:    this.$('input[name=title]').val(),
+        location: this.$('input[name=location]').val(),
+        start:    this.$('input[name=start-time]').val(),
+        end:      this.$('input[name=end-time]').val()
       };
       Calendar.channel.command('add:event', event);
+    },
+
+    clearEvents: function (evt) {
+      evt.preventDefault();
+      Calendar.channel.command('clear:events');
     },
 
     rulerIncrementChanged: function (evt) {

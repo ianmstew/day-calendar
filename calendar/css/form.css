@@ -1,8 +1,13 @@
 .forms {
 }
 
-.form-event {
+.form-event,
+.form-clear {
   margin-top: 20px;
+}
+
+.form-clear {
+  text-align: center;
 }
 
 .forms label {

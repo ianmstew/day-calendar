@@ -1,0 +1,33 @@
+.alert {
+  display: inline-block;
+  position: relative;
+  width: auto;
+  max-width: 620px;
+  border: 1px solid #FAEBCC;
+  padding: 10px 20px;
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 14px;
+  color: #8A6D3B;
+  background-color: #FCF8E3;
+}
+
+.alert-remove {
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  color: #8A6D3B;
+  opacity: 0.5;
+}
+
+.alert-remove:hover,
+.alert-remove:focus,
+.alert-remove:active {
+  cursor: pointer;
+  opacity: 1.0;
+  outline: 0;
+}
+
+.alert-message {
+  text-align: center;
+}

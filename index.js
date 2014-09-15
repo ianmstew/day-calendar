@@ -9,7 +9,10 @@
   }
 
   function startCalendar() {
-    calendar = new Calendar({ region: '#calendar-region' });
+    calendar = new Calendar({
+      region: '#calendar-region',
+      alertRegion: '#alert-region'
+    });
   }
 
   startCalendar();

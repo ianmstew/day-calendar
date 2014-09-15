@@ -54,7 +54,7 @@
 
       // Show the new view
       if (!this._view) {
-        view.setElement(this.$region).render();
+        this.$region.append(view.render().$el);
         this._view = view;
       }
 

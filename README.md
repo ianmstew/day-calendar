@@ -7,7 +7,5 @@ time ranges have equal widths.
 
 Implemented as a pure static page with minimal libraries, old school Javascript modules attached
 to a namespaced global, and no assets build/optimization step.  The goal is to demonstrate scalable
-front end architecture and a custom "best fit" algorthm using a simple Backbone widget.
-
-TODO:
-- Unit tests
+front end architecture and a custom "best fit" algorthm using a simple Backbone widget.  Note that
+architecture could be simplified with an additional framework like Backbone.Marionette.

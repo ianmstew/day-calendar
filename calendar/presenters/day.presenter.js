@@ -19,8 +19,7 @@
       }
 
       // If view is already shown, collection reset will trigger re-render
-      eventsCollection.once('invalid', this.onInvalid);
-      eventsCollection.reset(events, { validate: true });
+      Calendar.channel.command('reset:events', events);
 
       // No effect if already showing
       this.show(this.dayView);

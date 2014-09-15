@@ -14,12 +14,13 @@
   <link rel="stylesheet" href="calendar/css/event.css">
   <link rel="stylesheet" href="calendar/css/ruler.css">
   <link rel="stylesheet" href="calendar/css/form.css">
+  <link rel="stylesheet" href="calendar/css/alert.css">
 </head>
 <body>
   <!-- Target render region for widget; see index.js -->
   <div class="main-container">
-    <main id="calendar-region" class="clearfix">
-    </main>
+    <div id="alert-region"></div>
+    <main id="calendar-region" class="clearfix"></main>
   </div>
 
   <!-- Prefer templates to reside in view folder, e.g., views/entry/entry.view.tpl,
@@ -32,8 +33,7 @@
     <div class="calendar-container">
       <div class="ruler-container js-ruler"></div>
       <div class="events-container js-events"></div>
-    </div>
-    <div class="form-container js-form"></div>
+    </div><div class="form-container js-form"></div>
   </script>
 
   <!-- Entry template -->
@@ -70,11 +70,19 @@
         <legend>New Event</legend>
         <label><input type="text" name="title">Title</label>
         <label><input type="text" name="location">Location</label>
-        <label><input type="text" name="start-time">Start Time</label>
-        <label><input type="text" name="end-time">End Time</label>
+        <label><input type="text" name="start-time" placeholder="Mins from 9:00am">Start Time</label>
+        <label><input type="text" name="end-time" placeholder="Mins from 9:00am">End Time</label>
         <button name="add-event">Add Event</button>
       </fieldset>
     </form>
+    <form class="form-clear js-form-clear">
+      <button name="clear-events">Clear Events</button>
+    </form>
+  </script>
+
+  <script id="alert-view" type="text/html">
+    <a class="alert-remove js-remove" tabindex="0">×</a>
+    <div class="alert-message"><%- message %></div>
   </script>
 
   <!-- While Backbone is sufficient for this small demo, were the app to grow any
@@ -98,6 +106,7 @@
   <script src="calendar/calendar.entities.js"></script>
   <script src="calendar/presenters/day.presenter.js"></script>
   <script src="calendar/presenters/error.presenter.js"></script>
+  <script src="calendar/entities/alert.model.js"></script>
   <script src="calendar/entities/ruler.model.js"></script>
   <script src="calendar/entities/event.model.js"></script>
   <script src="calendar/entities/events.collection.js"></script>
@@ -106,6 +115,7 @@
   <script src="calendar/views/form.view.js"></script>
   <script src="calendar/views/events.view.js"></script>
   <script src="calendar/views/event.view.js"></script>
+  <script src="calendar/views/alert.view.js"></script>
   <script src="calendar/lib/util/time.js"></script>
   <script src="calendar/lib/sort/sorter.js"></script>
   <script src="calendar/lib/sort/group.js"></script>
@@ -113,5 +123,32 @@
 
   <!-- Day Calendar demo driver -->
   <script src="index.js"></script>
+
+  <script>
+    var count = 0;
+    var howMany = 7;
+    var events = [];
+    var start;
+    var end;
+    var title;
+    var loc;
+    var height;
+
+    while (count++ < howMany) {
+      height = (Math.random() * 0.25 + 0.07) * 720;
+      start = parseInt(Math.random() * (720 - height));
+      end = start + height;
+      title = "Title " + count;
+      loc = "Location " + count;
+      events.push({ 
+        start: start,
+        end: end,
+        title: title,
+        location: loc
+      });
+    }
+
+    layOutDay(events);
+  </script>
 </body>
 </html>

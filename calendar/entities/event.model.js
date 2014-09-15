@@ -8,8 +8,8 @@
     _numCols: null,
 
     defaults: {
-      start: null,
-      end: null,
+      start: 0,
+      end: 0,
       title: 'No Title',
       location: 'No Location'
     },
@@ -17,6 +17,15 @@
     initialize: function () {
       this._col = 0;
       this._numCols = 1;
+    },
+
+    // Sanitize data and permit defaults to go into effect for empty strings
+    parse: function (data) {
+      data.title = data.title || undefined;
+      data.location = data.location || undefined;
+      data.start = parseInt(data.start) || undefined;
+      data.end = parseInt(data.end) || undefined;
+      return data;
     },
 
     setCol: function (col) {

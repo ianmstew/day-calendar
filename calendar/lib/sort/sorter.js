@@ -17,10 +17,6 @@
   // 4. Repeat for the next column
   function Sorter(models) {
     this.models = models;
-    _.each(this.models, function (model) {
-      model.setCol(null);
-      model.setNumCols(null);
-    });
     this.groups = new Calendar.Sort.Groups();
   }
 
@@ -39,6 +35,10 @@
       // groupId is used internally by the sort algorithm, therefore there is no need to store
       // on the actual Backbone model
       var _models = _.map(this.models, function (model) {
+        // Reset position before calculations
+        model.setCol(null);
+        model.setNumCols(null);
+        // Add groupId to sort model wrapper
         return { groupId: null, model: model };
       });
 

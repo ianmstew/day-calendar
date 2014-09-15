@@ -9,11 +9,11 @@
     className: 'ruler',
 
     initialize: function () {
-      this.model = Calendar.channel.request('ruler');
-      this.model.set({
+      Calendar.channel.command('set:ruler', {
         start: 9,
         end: 21
       });
+      this.model = Calendar.channel.request('ruler');
       this.model.on('change', this.render.bind(this));
     },
 

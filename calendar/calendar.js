@@ -6,11 +6,13 @@
     dayPresenter: null,
     errorPresenter: null,
 
-    initialize: function () {
+    initialize: function (options) {
       this.dayPresenter = new Calendar.Presenters.DayPresenter({
         region: this.region
       });
-      this.errorPresenter = new Calendar.Presenters.ErrorPresenter();
+      this.errorPresenter = new Calendar.Presenters.ErrorPresenter({
+        region: options.alertRegion
+      });
 
       // Start entities module
       Calendar.CalendarEntities.start();

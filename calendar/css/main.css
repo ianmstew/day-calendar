@@ -1,9 +1,18 @@
+#alert-region {
+  height: 55px;
+  text-align: center;
+}
+
+#calendar-region {
+  white-space: nowrap;
+}
+
 .main-container {
   text-align: center;
-  margin-top: 35px;
 }
 
 main {
   display: inline-block;
   text-align: left;
+  margin-bottom: 55px;
 }
