@@ -56,6 +56,7 @@
     <% }); %>
   </script>
 
+  <!-- Form template -->
   <script id="forms-view" type="text/html">
     <form class="form-ruler">
       <fieldset>
@@ -80,6 +81,7 @@
     </form>
   </script>
 
+  <!-- Alert template -->
   <script id="alert-view" type="text/html">
     <a class="alert-remove js-remove" tabindex="0">×</a>
     <div class="alert-message"><%- message %></div>
@@ -88,8 +90,8 @@
   <!-- While Backbone is sufficient for this small demo, were the app to grow any
        larger an additional framework like Backbone.Marionette would be beneficial.
        In fact, this widget's view classes have a good bit of boilerplate that could
-       be avoided with the addition of Backbone.Marionette. I chose Backbone to
-       demonstrate my grasp of the fundamental issues surrounding view management. -->
+       be avoided with the addition of Backbone.Marionette. I chose pure Backbone to
+       demonstrate my grasp of the issues surrounding low level view management. -->
 
   <!-- Libraries -->
   <script src="calendar/vendor/js/jquery.js"></script>
@@ -124,6 +126,7 @@
   <!-- Day Calendar demo driver -->
   <script src="index.js"></script>
 
+  <!-- Show demo events on startup -->
   <script>
     var count = 0;
     var howMany = 7;
