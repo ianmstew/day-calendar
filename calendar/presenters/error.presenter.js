@@ -7,6 +7,10 @@
       this.listenTo(Calendar.channel, 'user:error', this.onUserError.bind(this));
     },
 
+    onPresent: function () {
+      console.warn('present() does nothing; use events channel');
+    },
+
     // Implement this method to display general feedback on user error
     onUserError: function (error) {
       var alertModel = new Calendar.Entities.AlertModel({

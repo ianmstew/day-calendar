@@ -1,6 +1,6 @@
 (function (Backbone, Calendar, $, _) {
 
-  // Simple static view. Time index logic is within the model.
+  // Form for driving day calendar
   var FormView = Backbone.View.extend({
 
     // Precompile template on script load
@@ -25,6 +25,7 @@
       return this;
     },
 
+    // Add a new event
     submitEvent: function (evt) {
       evt.preventDefault();
       var event = {
@@ -46,6 +47,7 @@
       Calendar.channel.command('change:ruler:increment', increment);
     },
 
+    // Select the appropriate radio button
     _setDefaultState: function () {
       this.$('input[name=ruler-increment]')
         .filter('input[value=' + this.rulerModel.get('increment') + ']')

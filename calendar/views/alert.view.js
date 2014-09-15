@@ -1,5 +1,6 @@
 (function (Backbone, Calendar, $, _) {
 
+  // Nice alert messages
   var AlertView = Backbone.View.extend({
 
     // Precompile template on script load
